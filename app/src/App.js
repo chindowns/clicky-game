@@ -10,11 +10,11 @@ class App extends Component {
     message: "Click to Begin",
     score: 0,
     highScore: 0,
-    clicked: false
   };
 
   handleClick = (id, clicked) => {
     const shuffleImgs = this.state.images;
+
     if (clicked) {
       shuffleImgs.forEach((image, index) => {
         shuffleImgs[index].clicked = false;
@@ -22,20 +22,21 @@ class App extends Component {
       return this.setState({
         image: shuffleImgs.sort(() => Math.random() - 0.5),
         message: "You Clicked that one already",
-        score:0
+        score: 0
       })
     } else {
       shuffleImgs.forEach((image, index) => {
-        if(id === image.id) {
+        if (id === image.id) {
           shuffleImgs[index].clicked = true;
         }
       });
-      const {highScore, score} = this.state;
+
+      const { highScore, score } = this.state;
       let newScore = score + 1;
       let newHighScore = score > highScore ? newScore : highScore;
 
       return this.setState({
-        image: shuffleImgs.sort(() => Math.random() -0.5),
+        image: shuffleImgs.sort(() => Math.random() - 0.5),
         message: "Good Guess!",
         score: newScore,
         highScore: newHighScore
@@ -44,23 +45,34 @@ class App extends Component {
   };
 
   render() {
-    return(
+    return (
       <div>
-      <Title
-        score={this.state.score}
-        highScore={this.state.highScore}
-        message={this.state.message}
-      />
-      {this.state.images.map(image => (
-      <ImageCard
-        key={image.id}
-        id={image.id}
-        name={image.name}J
-        clicked={image.clicked}
-        image={image.image}
-        handleClick={this.handleClick}
-      />
-      ))};
+        <div className="jumbotron">
+          <div className="container text-center">
+            <h1 className="title">Match Game</h1>
+            <strong>Click on an image to earn points, but don't click on any, more than once!</strong>
+
+            <p className="score"><strong>Score: {this.state.score} | TopScore: {this.state.highScore}</strong></p>
+
+            <p className="message"><strong>{this.state.message}</strong></p>
+          </div>
+        </div>
+
+        <div className="container">
+          <div className="row row-cols-3">
+              {this.state.images.map(image => (
+                <ImageCard
+                  key={image.id}
+                  id={image.id}
+                  name={image.name} 
+                  clicked={image.clicked}
+                  image={image.image}
+                  handleClick={this.handleClick}
+                />
+              ))};
+          </div>
+        </div>
+
       </div>
     );
   }
