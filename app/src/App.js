@@ -44,7 +44,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <div className="jumbotron">
           <div className="container text-center">
             <h1 className="title">Match Game</h1>
@@ -56,7 +56,7 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container text-center">
           <div className="row row-cols-4">
               {this.state.images.map(image => (
                 <ImageCard
