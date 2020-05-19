@@ -57,7 +57,7 @@ class App extends Component {
         </div>
 
         <div className="container text-center">
-          <div className="row row-cols-4">
+          <div className="row row-cols-4npm">
               {this.state.images.map(image => (
                 <ImageCard
                   key={image.id}
