@@ -9,7 +9,8 @@ class App extends Component {
     images: images,
     message: "Click to Begin",
     score: 0,
-    highScore: 0
+    highScore: 0,
+    clicked: false
   };
 
   handleClick = (id, clicked) => {
@@ -54,9 +55,9 @@ class App extends Component {
       <ImageCard
         key={image.id}
         id={image.id}
-        name={images.name}
-        clicked={images.clicked}
-        image={images.image}
+        name={image.name}J
+        clicked={image.clicked}
+        image={image.image}
         handleClick={this.handleClick}
       />
       ))};
