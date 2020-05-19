@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import ImageCard from "./components/ImageCard";
-import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
 import images from "./images";
 
 class App extends Component {
@@ -46,7 +44,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="jumbotron">
           <div className="container text-center">
             <h1 className="title">Match Game</h1>
@@ -59,7 +57,7 @@ class App extends Component {
         </div>
 
         <div className="container">
-          <div className="row row-cols-3">
+          <div className="row row-cols-4">
               {this.state.images.map(image => (
                 <ImageCard
                   key={image.id}
